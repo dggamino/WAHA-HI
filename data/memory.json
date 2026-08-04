@@ -5,5 +5,9 @@
   "demo-user": {
     "last_message": "M\u00e1s informaci\u00f3n",
     "last_intent": "general_info"
+  },
+  "a9c444f3-3604-4396-86f1-bafe0f5a1e43": {
+    "last_message": "Quiero conocer los libros HEREDITARIA",
+    "last_intent": "book_interest"
   }
 }

@@ -6,6 +6,7 @@ from .intents.classifier import classify
 from .flows import FlowOrchestrator
 from .responders import get_responder
 from .memory import MemoryManager
+from .session import Session
 
 
 class CompanionPipeline:
@@ -17,10 +18,22 @@ class CompanionPipeline:
         self.memory = MemoryManager()
 
 
-    def handle(self, message, context=None, session_id="default"):
+    def handle(
+        self,
+        message,
+        context=None,
+        session=None,
+        session_id=None
+    ):
+
+        if session is None:
+            session = Session(
+                session_id=session_id,
+                channel="internal"
+            )
 
         previous = self.memory.recall(
-            session_id
+            session.id
         )
 
         if context is None:
@@ -37,12 +50,14 @@ class CompanionPipeline:
             context
         )
 
+        session.state = {
+            "last_message": message,
+            "last_intent": intent
+        }
+
         self.memory.remember(
-            session_id,
-            {
-                "last_message": message,
-                "last_intent": intent
-            }
+            session.id,
+            session.state
         )
 
         response = self.responder.build(
@@ -53,5 +68,6 @@ class CompanionPipeline:
             "intent": intent,
             "result": result,
             "response": response,
-            "memory": previous
+            "memory": previous,
+            "session_id": session.id
         }
