@@ -1,3 +1,9 @@
-from .engine import CompanionEngine
+"""
+WAHA-HI Companion Engine
+"""
 
-__all__ = ["CompanionEngine"]
+from .memory_intelligence import MemoryIntelligence
+
+__all__ = [
+    "MemoryIntelligence"
+]
