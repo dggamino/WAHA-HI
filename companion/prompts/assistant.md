@@ -1,0 +1,1 @@
+Reglas generales de interacción.
