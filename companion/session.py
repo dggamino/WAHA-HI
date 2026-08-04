@@ -16,3 +16,27 @@ class Session:
             "created_at": self.created_at.isoformat(),
             "state": self.state
         }
+
+class SessionMemory:
+
+    def __init__(self, session, memory):
+
+        self.session = session
+        self.memory = memory
+
+
+    def save_state(self):
+
+        self.memory.remember(
+            self.session.id,
+            self.session.state
+        )
+
+
+    def load_state(self):
+
+        self.session.state = self.memory.recall(
+            self.session.id
+        )
+
+        return self.session.state
