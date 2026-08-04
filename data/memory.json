@@ -9,5 +9,9 @@
   "a9c444f3-3604-4396-86f1-bafe0f5a1e43": {
     "last_message": "Quiero conocer los libros HEREDITARIA",
     "last_intent": "book_interest"
+  },
+  "demo-wa-001": {
+    "last_message": "Quiero conocer los libros HEREDITARIA",
+    "last_intent": "book_interest"
   }
 }
