@@ -1,26 +1,35 @@
 """
-Companion Pipeline Integration Foundation v0.3.0
-IMPLEMENTAR 020: Pipeline Multi-Turn Resolver Integration Foundation v0.1.0
+Companion Pipeline Integration Foundation v0.4.0
+
+IMPLEMENTAR 022:
+Pipeline Memory Intelligence Integration Foundation v0.1.0
 """
 
 from .intents.classifier import classify
 from .flows import FlowOrchestrator
 from .responders import get_responder
 from .session import Session
+
 from .context import (
     ContextLifecycleManager,
     ConversationResolver,
 )
 
+from .memory_intelligence import MemoryIntelligence
+
 
 class CompanionPipeline:
+
 
     def __init__(self):
 
         self.orchestrator = FlowOrchestrator()
         self.responder = get_responder()
+
         self.context_manager = ContextLifecycleManager()
         self.resolver = ConversationResolver()
+
+        self.memory_intelligence = MemoryIntelligence()
 
 
     def handle(
@@ -30,6 +39,7 @@ class CompanionPipeline:
         session=None,
         session_id=None
     ):
+
 
         if session is None:
 
@@ -111,16 +121,35 @@ class CompanionPipeline:
         )
 
 
+        intelligent_memory = self.memory_intelligence.enrich(
+            message,
+            intent,
+            result
+        )
+
+
+        context.memory = intelligent_memory
+
+
         self.context_manager.persist_context(
             context
         )
 
 
         return {
+
             "intent": intent,
+
             "message": resolved_message,
+
             "result": result,
+
             "response": response,
+
+            "memory": intelligent_memory,
+
             "context": context.to_dict(),
+
             "session_id": session.id
+
         }
