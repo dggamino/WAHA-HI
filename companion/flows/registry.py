@@ -15,3 +15,10 @@ def get_flow(intent):
 
 def list_flows():
     return list(FLOWS.keys())
+
+from .books.books_flow import BooksFlow
+
+register_flow(
+    "book_interest",
+    BooksFlow()
+)
