@@ -1,5 +1,9 @@
 {
   "user-001": {
     "intent": "book_interest"
+  },
+  "demo-user": {
+    "last_message": "M\u00e1s informaci\u00f3n",
+    "last_intent": "general_info"
   }
 }
