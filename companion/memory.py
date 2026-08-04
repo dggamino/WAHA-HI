@@ -1,15 +1,18 @@
 """
-Persistent Memory Foundation v0.1.0
+Persistent Context Memory Foundation v0.1.0
 """
 
 import json
 from pathlib import Path
+from datetime import datetime
 
 
 class MemoryStore:
 
     def __init__(self, path="data/memory.json"):
+
         self.path = Path(path)
+
         self.path.parent.mkdir(
             exist_ok=True
         )
@@ -17,22 +20,30 @@ class MemoryStore:
         if not self.path.exists():
             self.path.write_text("{}")
 
+
     def _read(self):
+
         return json.loads(
             self.path.read_text()
         )
 
+
     def _write(self, data):
+
         self.path.write_text(
             json.dumps(
                 data,
-                indent=2
+                indent=2,
+                ensure_ascii=False
             )
         )
+
 
     def save(self, session_id, data):
 
         storage = self._read()
+
+        data["updated_at"] = datetime.now().isoformat()
 
         storage[session_id] = data
 
@@ -51,33 +62,29 @@ class MemoryStore:
 
 class MemoryManager:
 
+
     def __init__(self):
+
         self.store = MemoryStore()
 
+
     def remember(self, session_id, data):
+
         self.store.save(
             session_id,
             data
         )
 
+
     def recall(self, session_id):
+
         return self.store.load(
             session_id
         )
 
 
-# Compatibilidad con implementación anterior
+    def exists(self, session_id):
 
-class Memory:
-
-    def __init__(self):
-        self.storage = {}
-
-    def save(self, session_id, data):
-        self.storage[session_id] = data
-
-    def load(self, session_id):
-        return self.storage.get(
-            session_id,
-            {}
+        return bool(
+            self.recall(session_id)
         )

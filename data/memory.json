@@ -3,7 +3,7 @@
     "intent": "book_interest"
   },
   "demo-user": {
-    "last_message": "M\u00e1s informaci\u00f3n",
+    "last_message": "Más información",
     "last_intent": "general_info"
   },
   "a9c444f3-3604-4396-86f1-bafe0f5a1e43": {
@@ -13,5 +13,10 @@
   "demo-wa-001": {
     "last_message": "Quiero conocer los libros HEREDITARIA",
     "last_intent": "book_interest"
+  },
+  "test-session": {
+    "last_message": "Quiero conocer los libros HEREDITARIA",
+    "last_intent": "book_interest",
+    "updated_at": "2026-08-04T17:03:19.474281"
   }
 }
