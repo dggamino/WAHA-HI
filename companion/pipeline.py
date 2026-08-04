@@ -1,22 +1,26 @@
 """
-Companion Pipeline Integration Foundation v0.2.0
+Companion Pipeline Integration Foundation v0.3.0
+IMPLEMENTAR 020: Pipeline Multi-Turn Resolver Integration Foundation v0.1.0
 """
 
 from .intents.classifier import classify
 from .flows import FlowOrchestrator
 from .responders import get_responder
 from .session import Session
-from .context import ContextLifecycleManager
+from .context import (
+    ContextLifecycleManager,
+    ConversationResolver,
+)
 
 
 class CompanionPipeline:
-
 
     def __init__(self):
 
         self.orchestrator = FlowOrchestrator()
         self.responder = get_responder()
         self.context_manager = ContextLifecycleManager()
+        self.resolver = ConversationResolver()
 
 
     def handle(
@@ -26,7 +30,6 @@ class CompanionPipeline:
         session=None,
         session_id=None
     ):
-
 
         if session is None:
 
@@ -38,13 +41,49 @@ class CompanionPipeline:
 
         if context is None:
 
-            context = self.context_manager.create_context(
-                session
+            stored = self.context_manager.load_context(
+                session.id
             )
+
+            if stored:
+
+                context = self.context_manager.create_context(
+                    session
+                )
+
+                context.intent = stored.get(
+                    "intent",
+                    ""
+                )
+
+                context.memory = stored.get(
+                    "memory",
+                    {}
+                )
+
+                context.knowledge = stored.get(
+                    "knowledge",
+                    []
+                )
+
+            else:
+
+                context = self.context_manager.create_context(
+                    session
+                )
+
+
+        context_data = context.to_dict()
+
+
+        resolved_message = self.resolver.resolve(
+            message,
+            context_data
+        )
 
 
         intent = classify(
-            message
+            resolved_message
         )
 
 
@@ -79,6 +118,7 @@ class CompanionPipeline:
 
         return {
             "intent": intent,
+            "message": resolved_message,
             "result": result,
             "response": response,
             "context": context.to_dict(),
