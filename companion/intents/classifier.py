@@ -1,14 +1,11 @@
-def classify(message):
+"""
+Intent Classifier Foundation v0.1.0
+"""
 
+def classify(message: str):
     text = message.lower()
 
     if "libro" in text or "libros" in text:
         return "book_interest"
 
-    if "asesoría" in text or "consulta" in text:
-        return "consultation_request"
-
-    if "humano" in text or "persona" in text:
-        return "human_escalation"
-
-    return "unknown"
+    return "general_info"

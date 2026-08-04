@@ -1,17 +1,20 @@
-from .models import Intent
+"""
+Intent Registry Foundation v0.1.0
+"""
 
-
-INTENTS = [
-    Intent("book_interest", "Interés por libros"),
-    Intent("consultation_request", "Solicitud de consulta"),
-    Intent("caregiver_problem", "Problema relacionado con cuidado"),
-    Intent("property_question", "Consulta patrimonial"),
-    Intent("elderly_support", "Apoyo adulto mayor"),
-    Intent("general_information", "Información general"),
-    Intent("human_escalation", "Solicitar atención humana"),
-    Intent("unknown", "No identificado"),
-]
+INTENTS = {
+    "book_interest": {
+        "description": "Usuario interesado en libros HEREDITARIA"
+    },
+    "general_info": {
+        "description": "Consulta general"
+    }
+}
 
 
 def list_intents():
-    return INTENTS
+    return list(INTENTS.keys())
+
+
+def get_intent(name):
+    return INTENTS.get(name)

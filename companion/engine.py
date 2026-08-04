@@ -2,7 +2,7 @@ import logging
 from pathlib import Path
 
 from .session import Session
-from .context import Context
+from .context import ConversationContext, ContextService
 from .router import dispatch
 from .intents.classifier import classify
 from .intents.registry import list_intents
@@ -29,20 +29,19 @@ def load_prompts():
     return prompts
 
 
-def process(message, session_id=None):
 
+def process(message, session_id=None):
     session = Session(
         session_id=session_id,
         channel="whatsapp"
     )
 
-    context = Context(session)
-
     intent = classify(message)
 
-    context.update(
-        "intent",
-        intent
+    context = ConversationContext(
+        session_id=session.id,
+        user_id="",
+        intent=intent
     )
 
     response = dispatch(
@@ -52,9 +51,7 @@ def process(message, session_id=None):
 
     return response
 
-
 def main():
-
     logging.info("COMPANION_STARTED")
 
     session = Session(
@@ -90,3 +87,15 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+class CompanionEngine:
+    def __init__(self):
+        self.prompts = load_prompts()
+        logging.info("COMPANION_ENGINE_INITIALIZED")
+
+    def process(self, message, session_id=None):
+        return process(message, session_id)
+
+    def intents(self):
+        return list_intents()

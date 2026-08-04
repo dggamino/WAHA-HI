@@ -1,21 +1,21 @@
-from .flows import books, consultation, escalation
+"""
+Companion Intent Router Foundation v0.1.0
+"""
+
+from .intents.registry import get_intent
 
 
-ROUTES = {
-    "book_interest": books.handle,
-    "consultation_request": consultation.handle,
-    "human_escalation": escalation.handle,
-}
+def dispatch(intent_name, context=None):
+    intent = get_intent(intent_name)
 
-
-def dispatch(intent, context):
-
-    handler = ROUTES.get(intent)
-
-    if handler:
-        return handler(context)
+    if not intent:
+        return {
+            "status": "unknown_intent",
+            "intent": intent_name
+        }
 
     return {
-        "type": "text",
-        "content": "No pude identificar la solicitud."
+        "status": "routed",
+        "intent": intent_name,
+        "context": context
     }
