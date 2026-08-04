@@ -1,6 +1,6 @@
 import logging
 from pathlib import Path
-
+from .pipeline import CompanionPipeline
 from .session import Session
 from .context import ConversationContext, ContextService
 from .router import dispatch
@@ -90,6 +90,7 @@ if __name__ == "__main__":
 
 
 class CompanionEngine:
+
     def __init__(self):
         self.prompts = load_prompts()
         logging.info("COMPANION_ENGINE_INITIALIZED")
@@ -99,3 +100,7 @@ class CompanionEngine:
 
     def intents(self):
         return list_intents()
+
+    def handle_message(self, message):
+        pipeline = CompanionPipeline()
+        return pipeline.handle(message)
