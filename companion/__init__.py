@@ -1,4 +1,3 @@
-"""
-WAHA-HI Companion Engine
-Conversational orchestration layer.
-"""
+from .engine import CompanionEngine
+
+__all__ = ["CompanionEngine"]

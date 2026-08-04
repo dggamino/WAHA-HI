@@ -1,92 +1,10 @@
-import logging
-from pathlib import Path
+"""
+WAHA-HI Companion Engine Foundation v0.1.0
+"""
 
-from .session import Session
-from .context import Context
-from .router import dispatch
-from .intents.classifier import classify
-from .intents.registry import list_intents
+class CompanionEngine:
+    def __init__(self):
+        self.status = "initialized"
 
-
-logging.basicConfig(
-    filename="logs/companion.log",
-    level=logging.INFO,
-    format="%(asctime)s %(levelname)s %(message)s"
-)
-
-
-def load_prompts():
-
-    prompt_path = Path("companion/prompts")
-
-    prompts = list(prompt_path.glob("*.md"))
-
-    logging.info(
-        "PROMPTS_LOADED %s",
-        len(prompts)
-    )
-
-    return prompts
-
-
-def process(message, session_id=None):
-
-    session = Session(
-        session_id=session_id,
-        channel="whatsapp"
-    )
-
-    context = Context(session)
-
-    intent = classify(message)
-
-    context.update(
-        "intent",
-        intent
-    )
-
-    response = dispatch(
-        intent,
-        context
-    )
-
-    return response
-
-
-def main():
-
-    logging.info("COMPANION_STARTED")
-
-    session = Session(
-        channel="demo"
-    )
-
-    logging.info(
-        "SESSION_CREATED %s",
-        session.id
-    )
-
-    load_prompts()
-
-    intents = list_intents()
-
-    logging.info(
-        "INTENTS_REGISTERED %s",
-        len(intents)
-    )
-
-    result = process(
-        "Quiero conocer los libros HEREDITARIA",
-        session.id
-    )
-
-    logging.info(
-        "ROUTER_READY %s",
-        result
-    )
-
-    print(result)
-
-
-if __name__ == "__main__":
-    main()
+    def start(self):
+        return "COMPANION_ENGINE_STARTED"
