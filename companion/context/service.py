@@ -2,9 +2,8 @@
 Conversation Context Service.
 """
 
-
 from companion.context.merge import ContextMerger
-
+from companion.states.machine import ConversationStateMachine
 
 
 class ContextService:
@@ -15,7 +14,6 @@ class ContextService:
         self.merger = ContextMerger()
 
 
-
     def create_context(
         self,
         session,
@@ -23,12 +21,16 @@ class ContextService:
         query
     ):
 
-        return self.merger.build(
-
+        context = self.merger.build(
             session,
-
             intent,
-
             query
-
         )
+
+        machine = ConversationStateMachine()
+
+        context.update_state(
+            machine.current_state()
+        )
+
+        return context
