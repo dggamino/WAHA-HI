@@ -1,10 +1,14 @@
 """
-Execution Tracking Foundation v0.1.0
+Execution Tracking Foundation v0.2.0
 
-Registra el ciclo de vida de ejecución del Companion Engine.
+Sistema persistente de seguimiento de ejecución.
+IMPLEMENTAR 029
 """
 
 from datetime import datetime
+
+from .execution_store import ExecutionStore
+
 
 
 class ExecutionTracker:
@@ -12,7 +16,7 @@ class ExecutionTracker:
 
     def __init__(self):
 
-        self.events = []
+        self.store = ExecutionStore()
 
 
 
@@ -29,20 +33,43 @@ class ExecutionTracker:
     ):
 
         event = {
+
             "status": "CREATED",
+
             "session_id": session_id,
+
             "goal": plan.get(
                 "goal",
                 "unknown"
             ),
+
             "actions": plan.get(
                 "actions",
                 []
             ),
+
             "created_at": self.timestamp()
+
         }
 
-        self.events.append(event)
+
+        self.store.append(
+            event
+        )
+
+
+        return event
+
+
+
+    def persist(
+        self,
+        event
+    ):
+
+        self.store.append(
+            event
+        )
 
         return event
 
@@ -56,6 +83,10 @@ class ExecutionTracker:
         event["status"] = "STARTED"
 
         event["started_at"] = self.timestamp()
+
+        self.persist(
+            event
+        )
 
         return event
 
@@ -71,7 +102,26 @@ class ExecutionTracker:
 
         event["completed_at"] = self.timestamp()
 
-        event["result"] = result
+        event["result_summary"] = {
+
+            "status": result.get(
+                "status"
+            )
+            if isinstance(result, dict)
+            else None,
+
+            "flow": result.get(
+                "flow"
+            )
+            if isinstance(result, dict)
+            else None
+
+        }
+
+
+        self.persist(
+            event
+        )
 
         return event
 
@@ -89,10 +139,15 @@ class ExecutionTracker:
 
         event["failed_at"] = self.timestamp()
 
+
+        self.persist(
+            event
+        )
+
         return event
 
 
 
     def history(self):
 
-        return self.events
+        return self.store.all()
