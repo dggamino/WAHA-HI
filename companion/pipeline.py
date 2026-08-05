@@ -1,32 +1,46 @@
 """
-Companion Pipeline Foundation v0.9.0
+Companion Pipeline Foundation v1.0.0
 
-IMPLEMENTAR 027:
-Goal-Oriented Action Planner Foundation
+IMPLEMENTAR 028:
+Execution Tracking Foundation
 """
 
 
 from .intents.classifier import classify
+
 from .flows import FlowOrchestrator
+
 from .responders import get_responder
+
 from .session import Session
+
 
 from .context import (
     ContextLifecycleManager,
     ConversationResolver,
 )
 
+
 from .memory import MemoryManager
+
 from .memory_intelligence import MemoryIntelligence
+
 from .semantic_memory import SemanticMemoryRetriever
 
+
 from .flow_selector import MemoryFlowSelector
+
 from .decision_layer import DecisionLayer
+
 from .action_planner import ActionPlanner
+
+from .execution_tracker import ExecutionTracker
+
 
 
 
 class CompanionPipeline:
+
 
 
     def __init__(self):
@@ -34,6 +48,7 @@ class CompanionPipeline:
         self.orchestrator = FlowOrchestrator()
 
         self.responder = get_responder()
+
 
         self.context_manager = ContextLifecycleManager()
 
@@ -53,11 +68,12 @@ class CompanionPipeline:
 
         self.flow_selector = MemoryFlowSelector()
 
-
         self.decision_layer = DecisionLayer()
 
-
         self.action_planner = ActionPlanner()
+
+        self.execution_tracker = ExecutionTracker()
+
 
 
 
@@ -78,16 +94,19 @@ class CompanionPipeline:
             )
 
 
+
         semantic_memory = self.semantic_memory.retrieve(
             session.id,
             message
         )
 
 
+
         selected_flow = self.flow_selector.select(
             message,
             semantic_memory
         )
+
 
 
         decision = self.decision_layer.decide(
@@ -97,6 +116,7 @@ class CompanionPipeline:
         )
 
 
+
         plan = self.action_planner.plan(
             decision,
             intent=decision.get("intent"),
@@ -104,97 +124,160 @@ class CompanionPipeline:
         )
 
 
-        if context is None:
 
-            context = self.context_manager.create_context(
-                session
+        execution = self.execution_tracker.create(
+            plan,
+            session.id
+        )
+
+
+
+        self.execution_tracker.start(
+            execution
+        )
+
+
+
+        try:
+
+
+            if context is None:
+
+                context = self.context_manager.create_context(
+                    session
+                )
+
+
+
+            context_data = context.to_dict()
+
+
+
+            if semantic_memory:
+
+                context_data["memory"] = semantic_memory
+
+
+
+            resolved_message = self.resolver.resolve(
+                message,
+                context_data
             )
 
 
-        context_data = context.to_dict()
+
+            if decision["action"] in [
+                "continue_flow",
+                "resume_context"
+            ]:
+
+                intent = decision["intent"]
+
+            else:
+
+                intent = classify(
+                    resolved_message
+                )
 
 
-        if semantic_memory:
 
-            context_data["memory"] = semantic_memory
-
-
-        resolved_message = self.resolver.resolve(
-            message,
-            context_data
-        )
+            plan["intent"] = intent
 
 
-        if decision["action"] in [
-            "continue_flow",
-            "resume_context"
-        ]:
 
-            intent = decision["intent"]
-
-        else:
-
-            intent = classify(
-                resolved_message
+            self.context_manager.update_context(
+                context,
+                intent=intent,
+                state="INTENT_DETECTED"
             )
 
 
-        plan["intent"] = intent
+
+            result = self.orchestrator.route(
+                intent,
+                context
+            )
 
 
-        self.context_manager.update_context(
-            context,
-            intent=intent,
-            state="INTENT_DETECTED"
-        )
+
+            self.context_manager.update_context(
+                context,
+                state="FLOW_ACTIVE"
+            )
 
 
-        result = self.orchestrator.route(
-            intent,
-            context
-        )
+
+            response = self.responder.build(
+                result
+            )
 
 
-        self.context_manager.update_context(
-            context,
-            state="FLOW_ACTIVE"
-        )
+
+            self.execution_tracker.complete(
+                execution,
+                result
+            )
 
 
-        response = self.responder.build(
-            result
-        )
+
+            intelligent_memory = self.memory_intelligence.enrich(
+                message,
+                intent,
+                result
+            )
 
 
-        intelligent_memory = self.memory_intelligence.enrich(
-            message,
-            intent,
-            result
-        )
+
+            context.memory = intelligent_memory
 
 
-        context.memory = intelligent_memory
+
+            self.context_manager.persist_context(
+                context
+            )
 
 
-        self.context_manager.persist_context(
-            context
-        )
+
+            self.memory_manager.remember(
+                session.id,
+                intelligent_memory
+            )
 
 
-        self.memory_manager.remember(
-            session.id,
-            intelligent_memory
-        )
+
+            return {
+
+                "intent": intent,
+
+                "decision": decision,
+
+                "plan": plan,
+
+                "execution": execution,
+
+                "message": resolved_message,
+
+                "result": result,
+
+                "response": response,
+
+                "memory": intelligent_memory,
+
+                "semantic_memory": semantic_memory,
+
+                "session_id": session.id
+
+            }
 
 
-        return {
-            "intent": intent,
-            "decision": decision,
-            "plan": plan,
-            "message": resolved_message,
-            "result": result,
-            "response": response,
-            "memory": intelligent_memory,
-            "semantic_memory": semantic_memory,
-            "session_id": session.id
-        }
+
+        except Exception as error:
+
+
+            self.execution_tracker.fail(
+                execution,
+                error
+            )
+
+
+            raise
