@@ -1,8 +1,8 @@
 """
-Companion Pipeline Foundation v0.8.0
+Companion Pipeline Foundation v0.9.0
 
-IMPLEMENTAR 026:
-Companion Decision Layer Foundation
+IMPLEMENTAR 027:
+Goal-Oriented Action Planner Foundation
 """
 
 
@@ -22,6 +22,7 @@ from .semantic_memory import SemanticMemoryRetriever
 
 from .flow_selector import MemoryFlowSelector
 from .decision_layer import DecisionLayer
+from .action_planner import ActionPlanner
 
 
 
@@ -54,6 +55,9 @@ class CompanionPipeline:
 
 
         self.decision_layer = DecisionLayer()
+
+
+        self.action_planner = ActionPlanner()
 
 
 
@@ -93,6 +97,13 @@ class CompanionPipeline:
         )
 
 
+        plan = self.action_planner.plan(
+            decision,
+            intent=decision.get("intent"),
+            message=message
+        )
+
+
         if context is None:
 
             context = self.context_manager.create_context(
@@ -126,6 +137,9 @@ class CompanionPipeline:
             intent = classify(
                 resolved_message
             )
+
+
+        plan["intent"] = intent
 
 
         self.context_manager.update_context(
@@ -176,6 +190,7 @@ class CompanionPipeline:
         return {
             "intent": intent,
             "decision": decision,
+            "plan": plan,
             "message": resolved_message,
             "result": result,
             "response": response,
