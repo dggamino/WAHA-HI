@@ -1,5 +1,7 @@
 """
-Multi-Turn Conversation Flow Foundation v0.1.0
+Conversation Resolver
+
+Semantic Reference Resolution Foundation v0.4.0
 """
 
 
@@ -9,37 +11,76 @@ class ConversationResolver:
     def resolve(
         self,
         message,
-        context
+        context=None
     ):
 
-        if context is None:
+        if not context:
             return message
 
 
-        previous_intent = context.get(
-            "intent",
-            ""
+        memory = context.get(
+            "memory",
+            {}
         )
 
 
-        if previous_intent == "book_interest":
+        intent = (
+            context.get("intent")
+            or memory.get("last_intent")
+        )
 
-            references = {
-                "primero": "Libro Fundacional HEREDITARIA",
-                "segundo": "Libro del Cuidador",
-                "tercero": "Libro del Patrimonio Invisible"
+
+        # Compatibilidad:
+        # memoria plana y memoria encapsulada
+
+        options = memory.get(
+            "available_options",
+            []
+        )
+
+
+        if not options:
+
+            conversation = memory.get(
+                "conversation",
+                {}
+            )
+
+            options = conversation.get(
+                "available_options",
+                []
+            )
+
+
+        text = message.lower().strip()
+
+
+        if intent == "book_interest" and options:
+
+
+            mapping = {
+                "primero": 0,
+                "primer": 0,
+                "segundo": 1,
+                "segundo libro": 1,
+                "tercero": 2,
+                "tercer": 2,
+                "1": 0,
+                "2": 1,
+                "3": 2,
             }
 
 
-            lower = message.lower()
+            for key, index in mapping.items():
 
-            for key, value in references.items():
+                if key in text:
 
-                if key in lower:
+                    if index < len(options):
 
-                    return (
-                        f"Quiero información sobre {value}"
-                    )
+                        return (
+                            "Quiero información sobre "
+                            + options[index]
+                        )
 
 
         return message

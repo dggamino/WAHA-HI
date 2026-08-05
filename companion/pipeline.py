@@ -1,8 +1,8 @@
 """
-Companion Pipeline Integration Foundation v0.4.0
+Companion Pipeline Integration Foundation v0.6.0
 
-IMPLEMENTAR 022:
-Pipeline Memory Intelligence Integration Foundation v0.1.0
+IMPLEMENTAR 024:
+Pipeline Semantic Memory Retrieval Integration Foundation v0.2.0
 """
 
 from .intents.classifier import classify
@@ -15,7 +15,9 @@ from .context import (
     ConversationResolver,
 )
 
+from .memory import MemoryManager
 from .memory_intelligence import MemoryIntelligence
+from .semantic_memory import SemanticMemoryRetriever
 
 
 class CompanionPipeline:
@@ -29,7 +31,14 @@ class CompanionPipeline:
         self.context_manager = ContextLifecycleManager()
         self.resolver = ConversationResolver()
 
+        self.memory_manager = MemoryManager()
+
+        self.semantic_memory = SemanticMemoryRetriever(
+            self.memory_manager
+        )
+
         self.memory_intelligence = MemoryIntelligence()
+
 
 
     def handle(
@@ -49,41 +58,33 @@ class CompanionPipeline:
             )
 
 
+        semantic_memory = self.semantic_memory.retrieve(
+            session.id,
+            message
+        )
+
+
         if context is None:
 
-            stored = self.context_manager.load_context(
-                session.id
+            context = self.context_manager.create_context(
+                session
             )
-
-            if stored:
-
-                context = self.context_manager.create_context(
-                    session
-                )
-
-                context.intent = stored.get(
-                    "intent",
-                    ""
-                )
-
-                context.memory = stored.get(
-                    "memory",
-                    {}
-                )
-
-                context.knowledge = stored.get(
-                    "knowledge",
-                    []
-                )
-
-            else:
-
-                context = self.context_manager.create_context(
-                    session
-                )
 
 
         context_data = context.to_dict()
+
+
+        # Inyección explícita de memoria semántica
+        if semantic_memory:
+
+            context_data["memory"] = semantic_memory
+
+            if not context_data.get("intent"):
+
+                context_data["intent"] = semantic_memory.get(
+                    "last_intent",
+                    ""
+                )
 
 
         resolved_message = self.resolver.resolve(
@@ -136,6 +137,12 @@ class CompanionPipeline:
         )
 
 
+        self.memory_manager.remember(
+            session.id,
+            intelligent_memory
+        )
+
+
         return {
 
             "intent": intent,
@@ -147,6 +154,8 @@ class CompanionPipeline:
             "response": response,
 
             "memory": intelligent_memory,
+
+            "semantic_memory": semantic_memory,
 
             "context": context.to_dict(),
 
