@@ -1,8 +1,8 @@
 """
-Companion Pipeline Integration Foundation v0.6.0
+Companion Pipeline Integration Foundation v0.7.0
 
-IMPLEMENTAR 024:
-Pipeline Semantic Memory Retrieval Integration Foundation v0.2.0
+IMPLEMENTAR 025:
+Memory-Driven Flow Selection Foundation
 """
 
 from .intents.classifier import classify
@@ -18,6 +18,7 @@ from .context import (
 from .memory import MemoryManager
 from .memory_intelligence import MemoryIntelligence
 from .semantic_memory import SemanticMemoryRetriever
+from .flow_selector import MemoryFlowSelector
 
 
 class CompanionPipeline:
@@ -38,6 +39,8 @@ class CompanionPipeline:
         )
 
         self.memory_intelligence = MemoryIntelligence()
+
+        self.flow_selector = MemoryFlowSelector()
 
 
 
@@ -64,6 +67,12 @@ class CompanionPipeline:
         )
 
 
+        memory_flow = self.flow_selector.select(
+            message,
+            semantic_memory
+        )
+
+
         if context is None:
 
             context = self.context_manager.create_context(
@@ -74,17 +83,9 @@ class CompanionPipeline:
         context_data = context.to_dict()
 
 
-        # Inyección explícita de memoria semántica
         if semantic_memory:
 
             context_data["memory"] = semantic_memory
-
-            if not context_data.get("intent"):
-
-                context_data["intent"] = semantic_memory.get(
-                    "last_intent",
-                    ""
-                )
 
 
         resolved_message = self.resolver.resolve(
@@ -93,9 +94,15 @@ class CompanionPipeline:
         )
 
 
-        intent = classify(
-            resolved_message
-        )
+        if memory_flow:
+
+            intent = memory_flow["intent"]
+
+        else:
+
+            intent = classify(
+                resolved_message
+            )
 
 
         self.context_manager.update_context(
@@ -144,21 +151,11 @@ class CompanionPipeline:
 
 
         return {
-
             "intent": intent,
-
             "message": resolved_message,
-
             "result": result,
-
             "response": response,
-
             "memory": intelligent_memory,
-
             "semantic_memory": semantic_memory,
-
-            "context": context.to_dict(),
-
             "session_id": session.id
-
         }
