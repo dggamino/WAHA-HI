@@ -1,9 +1,10 @@
 """
-Companion Pipeline Integration Foundation v0.7.0
+Companion Pipeline Foundation v0.8.0
 
-IMPLEMENTAR 025:
-Memory-Driven Flow Selection Foundation
+IMPLEMENTAR 026:
+Companion Decision Layer Foundation
 """
+
 
 from .intents.classifier import classify
 from .flows import FlowOrchestrator
@@ -18,7 +19,10 @@ from .context import (
 from .memory import MemoryManager
 from .memory_intelligence import MemoryIntelligence
 from .semantic_memory import SemanticMemoryRetriever
+
 from .flow_selector import MemoryFlowSelector
+from .decision_layer import DecisionLayer
+
 
 
 class CompanionPipeline:
@@ -27,20 +31,29 @@ class CompanionPipeline:
     def __init__(self):
 
         self.orchestrator = FlowOrchestrator()
+
         self.responder = get_responder()
 
         self.context_manager = ContextLifecycleManager()
+
         self.resolver = ConversationResolver()
 
+
         self.memory_manager = MemoryManager()
+
 
         self.semantic_memory = SemanticMemoryRetriever(
             self.memory_manager
         )
 
+
         self.memory_intelligence = MemoryIntelligence()
 
+
         self.flow_selector = MemoryFlowSelector()
+
+
+        self.decision_layer = DecisionLayer()
 
 
 
@@ -67,9 +80,16 @@ class CompanionPipeline:
         )
 
 
-        memory_flow = self.flow_selector.select(
+        selected_flow = self.flow_selector.select(
             message,
             semantic_memory
+        )
+
+
+        decision = self.decision_layer.decide(
+            message,
+            semantic_memory,
+            selected_flow
         )
 
 
@@ -94,9 +114,12 @@ class CompanionPipeline:
         )
 
 
-        if memory_flow:
+        if decision["action"] in [
+            "continue_flow",
+            "resume_context"
+        ]:
 
-            intent = memory_flow["intent"]
+            intent = decision["intent"]
 
         else:
 
@@ -152,6 +175,7 @@ class CompanionPipeline:
 
         return {
             "intent": intent,
+            "decision": decision,
             "message": resolved_message,
             "result": result,
             "response": response,
