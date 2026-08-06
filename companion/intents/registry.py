@@ -2,6 +2,9 @@ from .models import Intent
 
 
 INTENTS = [
+    Intent("greeting", "Saludo"),
+    Intent("help", "Solicitud de ayuda o menú"),
+    Intent("status", "Consulta de estado del sistema"),
     Intent("book_interest", "Interés por libros"),
     Intent("consultation_request", "Solicitud de consulta"),
     Intent("caregiver_problem", "Problema relacionado con cuidado"),

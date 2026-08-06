@@ -1,0 +1,101 @@
+2026-08-05 19:23:56,745 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+2026-08-05 19:23:56,746 INFO [33mPress CTRL+C to quit[0m
+2026-08-05 19:25:24,379 INFO 127.0.0.1 - - [05/Aug/2026 19:25:24] "GET /status HTTP/1.1" 200 -
+2026-08-05 22:35:20,232 INFO 127.0.0.1 - - [05/Aug/2026 22:35:20] "[35m[1mPOST /whatsapp/webhook HTTP/1.1[0m" 500 -
+2026-08-05 22:41:54,202 INFO 127.0.0.1 - - [05/Aug/2026 22:41:54] "[35m[1mPOST /whatsapp/webhook HTTP/1.1[0m" 500 -
+2026-08-05 22:46:03,366 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+2026-08-05 22:46:03,368 INFO [33mPress CTRL+C to quit[0m
+2026-08-05 22:47:49,569 INFO 127.0.0.1 - - [05/Aug/2026 22:47:49] "[35m[1mPOST /whatsapp/webhook HTTP/1.1[0m" 500 -
+2026-08-05 22:49:18,314 INFO 127.0.0.1 - - [05/Aug/2026 22:49:18] "[35m[1mPOST /whatsapp/webhook HTTP/1.1[0m" 500 -
+2026-08-05 22:56:40,465 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+2026-08-05 22:56:40,467 INFO [33mPress CTRL+C to quit[0m
+2026-08-05 22:57:48,342 INFO 127.0.0.1 - - [05/Aug/2026 22:57:48] "[35m[1mPOST /whatsapp/webhook HTTP/1.1[0m" 500 -
+2026-08-05 23:01:51,903 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+2026-08-05 23:01:51,906 INFO [33mPress CTRL+C to quit[0m
+2026-08-05 23:02:20,833 INFO 127.0.0.1 - - [05/Aug/2026 23:02:20] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-05 23:05:57,137 INFO 127.0.0.1 - - [05/Aug/2026 23:05:57] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-05 23:06:12,325 INFO 127.0.0.1 - - [05/Aug/2026 23:06:12] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-05 23:06:25,292 INFO 127.0.0.1 - - [05/Aug/2026 23:06:25] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-05 23:07:45,619 INFO 127.0.0.1 - - [05/Aug/2026 23:07:45] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-05 23:08:11,604 INFO 127.0.0.1 - - [05/Aug/2026 23:08:11] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-05 23:09:08,250 INFO 127.0.0.1 - - [05/Aug/2026 23:09:08] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-05 23:38:30,090 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+2026-08-05 23:38:30,092 INFO [33mPress CTRL+C to quit[0m
+2026-08-05 23:40:34,767 INFO 127.0.0.1 - - [05/Aug/2026 23:40:34] "GET /status HTTP/1.1" 200 -
+2026-08-05 23:40:34,799 INFO 127.0.0.1 - - [05/Aug/2026 23:40:34] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-05 23:40:34,836 INFO 127.0.0.1 - - [05/Aug/2026 23:40:34] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-05 23:40:34,886 INFO 127.0.0.1 - - [05/Aug/2026 23:40:34] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-05 23:56:50,192 INFO 127.0.0.1 - - [05/Aug/2026 23:56:50] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-05 23:58:01,947 INFO 127.0.0.1 - - [05/Aug/2026 23:58:01] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-05 23:59:28,764 INFO 127.0.0.1 - - [05/Aug/2026 23:59:28] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-05 23:59:56,554 INFO 127.0.0.1 - - [05/Aug/2026 23:59:56] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 00:00:39,836 INFO 127.0.0.1 - - [06/Aug/2026 00:00:39] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 00:02:30,817 INFO 127.0.0.1 - - [06/Aug/2026 00:02:30] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 00:02:50,007 INFO 127.0.0.1 - - [06/Aug/2026 00:02:50] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 00:03:25,558 INFO 127.0.0.1 - - [06/Aug/2026 00:03:25] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 00:05:50,256 INFO 127.0.0.1 - - [06/Aug/2026 00:05:50] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 00:06:09,639 INFO 127.0.0.1 - - [06/Aug/2026 00:06:09] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 00:06:35,643 INFO 127.0.0.1 - - [06/Aug/2026 00:06:35] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 00:10:59,821 INFO 127.0.0.1 - - [06/Aug/2026 00:10:59] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 01:13:01,907 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+2026-08-06 01:13:01,909 INFO [33mPress CTRL+C to quit[0m
+2026-08-06 01:14:23,582 INFO 127.0.0.1 - - [06/Aug/2026 01:14:23] "GET /status HTTP/1.1" 200 -
+2026-08-06 01:14:51,862 INFO 127.0.0.1 - - [06/Aug/2026 01:14:51] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 01:24:58,708 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+2026-08-06 01:24:58,710 INFO [33mPress CTRL+C to quit[0m
+2026-08-06 01:25:45,867 INFO 127.0.0.1 - - [06/Aug/2026 01:25:45] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 01:26:55,732 INFO 127.0.0.1 - - [06/Aug/2026 01:26:55] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 01:26:55,779 INFO 127.0.0.1 - - [06/Aug/2026 01:26:55] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 01:26:55,816 INFO 127.0.0.1 - - [06/Aug/2026 01:26:55] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 09:41:03,053 INFO 127.0.0.1 - - [06/Aug/2026 09:41:03] "GET /status HTTP/1.1" 200 -
+2026-08-06 09:46:50,883 INFO 127.0.0.1 - - [06/Aug/2026 09:46:50] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 09:47:08,820 INFO 127.0.0.1 - - [06/Aug/2026 09:47:08] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 09:52:58,109 INFO 127.0.0.1 - - [06/Aug/2026 09:52:58] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 09:52:58,172 INFO 127.0.0.1 - - [06/Aug/2026 09:52:58] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 09:55:13,744 INFO 127.0.0.1 - - [06/Aug/2026 09:55:13] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 10:00:27,009 INFO 127.0.0.1 - - [06/Aug/2026 10:00:27] "GET /status HTTP/1.1" 200 -
+2026-08-06 10:05:10,756 INFO 127.0.0.1 - - [06/Aug/2026 10:05:10] "GET /status HTTP/1.1" 200 -
+2026-08-06 10:05:54,812 INFO 127.0.0.1 - - [06/Aug/2026 10:05:54] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 10:51:19,197 INFO 127.0.0.1 - - [06/Aug/2026 10:51:19] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 10:54:27,769 INFO 127.0.0.1 - - [06/Aug/2026 10:54:27] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 10:54:35,299 INFO 127.0.0.1 - - [06/Aug/2026 10:54:35] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 10:54:41,438 INFO 127.0.0.1 - - [06/Aug/2026 10:54:41] "[35m[1mPOST /whatsapp/webhook HTTP/1.1[0m" 500 -
+2026-08-06 11:03:40,093 INFO 127.0.0.1 - - [06/Aug/2026 11:03:40] "[35m[1mPOST /whatsapp/webhook HTTP/1.1[0m" 500 -
+2026-08-06 11:04:59,399 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+2026-08-06 11:04:59,400 INFO [33mPress CTRL+C to quit[0m
+2026-08-06 11:04:59,742 INFO 127.0.0.1 - - [06/Aug/2026 11:04:59] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 11:21:39,911 INFO 127.0.0.1 - - [06/Aug/2026 11:21:39] "GET /status HTTP/1.1" 200 -
+2026-08-06 11:26:29,943 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+2026-08-06 11:26:29,944 INFO [33mPress CTRL+C to quit[0m
+2026-08-06 11:27:12,901 INFO 127.0.0.1 - - [06/Aug/2026 11:27:12] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 11:27:23,448 INFO 127.0.0.1 - - [06/Aug/2026 11:27:23] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 11:27:31,044 INFO 127.0.0.1 - - [06/Aug/2026 11:27:31] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 11:27:39,294 INFO 127.0.0.1 - - [06/Aug/2026 11:27:39] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 11:27:49,557 INFO 127.0.0.1 - - [06/Aug/2026 11:27:49] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 11:27:58,862 INFO 127.0.0.1 - - [06/Aug/2026 11:27:58] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 11:28:06,955 INFO 127.0.0.1 - - [06/Aug/2026 11:28:06] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 11:28:17,494 INFO 127.0.0.1 - - [06/Aug/2026 11:28:17] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 11:37:26,514 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+2026-08-06 11:37:26,516 INFO [33mPress CTRL+C to quit[0m
+2026-08-06 11:37:27,107 INFO 127.0.0.1 - - [06/Aug/2026 11:37:27] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 11:37:27,168 INFO 127.0.0.1 - - [06/Aug/2026 11:37:27] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 11:39:10,724 INFO 127.0.0.1 - - [06/Aug/2026 11:39:10] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 11:39:21,576 INFO 127.0.0.1 - - [06/Aug/2026 11:39:21] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 16:36:56,565 INFO 127.0.0.1 - - [06/Aug/2026 16:36:56] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 16:37:44,654 INFO 127.0.0.1 - - [06/Aug/2026 16:37:44] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 16:38:45,544 INFO 127.0.0.1 - - [06/Aug/2026 16:38:45] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 16:38:56,183 INFO 127.0.0.1 - - [06/Aug/2026 16:38:56] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 16:39:30,071 INFO 127.0.0.1 - - [06/Aug/2026 16:39:30] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 16:40:17,972 INFO 127.0.0.1 - - [06/Aug/2026 16:40:17] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 16:40:40,274 INFO 127.0.0.1 - - [06/Aug/2026 16:40:40] "POST /whatsapp/webhook HTTP/1.1" 200 -
+2026-08-06 16:45:24,154 INFO 127.0.0.1 - - [06/Aug/2026 16:45:24] "POST /whatsapp/webhook HTTP/1.1" 200 -

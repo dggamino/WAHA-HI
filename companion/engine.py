@@ -2,14 +2,14 @@ import logging
 from pathlib import Path
 
 from .session import Session
-from .context import Context
+from .context import ConversationContext
 from .router import dispatch
 from .intents.classifier import classify
 from .intents.registry import list_intents
 
 
 logging.basicConfig(
-    filename="logs/companion.log",
+    filename="/data/data/com.termux/files/home/WAHA-HI/logs/companion.log",
     level=logging.INFO,
     format="%(asctime)s %(levelname)s %(message)s"
 )
@@ -29,20 +29,20 @@ def load_prompts():
     return prompts
 
 
-def process(message, session_id=None):
+def process(message, session_id=None, user_id=None):
 
     session = Session(
         session_id=session_id,
         channel="whatsapp"
     )
 
-    context = Context(session)
-
     intent = classify(message)
 
-    context.update(
-        "intent",
-        intent
+    # FIX: Usar ConversationContext según tu dataclass local
+    context = ConversationContext(
+        session_id=session.id,
+        user_id=user_id or "",
+        intent=intent
     )
 
     response = dispatch(

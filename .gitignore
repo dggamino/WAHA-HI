@@ -1,21 +1,8 @@
-# Python
 __pycache__/
 *.py[cod]
-*.pyo
-
-# Virtual environments
+*$py.class
+*.bak
+*.swp
+*.swo
+.env
 .venv/
-venv/
-
-# Logs
-logs/*.log
-
-# Runtime databases
-*.db
-
-# Runtime data
-data/*.db
-
-# OS
-.DS_Store
-Thumbs.db
