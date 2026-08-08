@@ -47,6 +47,22 @@ BOOKS = {
         "fundamento_legal": "Decreto Número 87, Gaceta del Gobierno del Estado de México, 7 de mayo de 2013",
         "audience": "Punto de entrada — cualquier lector",
         "tier": "Biblioteca"
+    },
+    "cuadrante_patrimonio": {
+        "id": "HER-BOOK-CPF",
+        "title": "El Cuadrante del Patrimonio Familiar",
+        "category": "Diagnóstico familiar",
+        "content": "Marco de cuatro cuadrantes para diagnosticar la posición de cada miembro de la familia "
+                   "frente al patrimonio: Congelado, Calculador, Validador y Planeador. "
+                   "Incluye cómo moverse entre cuadrantes y por qué el cuadrante se transmite como herencia. "
+                   "7 capítulos + epílogo + nota legal.",
+        "chapters_path": "knowledge/books/metadata/cuadrante-patrimonio-familiar/",
+        "author": "Daniel Gómez Gamiño",
+        "year": 2026,
+        "keywords": ["PADRES", "CASA", "PENSIÓN", "TESTAMENTO", "CUIDADOR", "NOTARIO"],
+        "fundamento_legal": "Decreto Número 87, Gaceta del Gobierno del Estado de México, 7 de mayo de 2013",
+        "audience": "El marco de diagnóstico completo",
+        "tier": "Biblioteca"
     }
 }
 
@@ -57,7 +73,6 @@ def get_books():
 
 def catalog():
     return get_books()
-
 
 
 
