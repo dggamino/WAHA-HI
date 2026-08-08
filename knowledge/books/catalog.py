@@ -54,6 +54,31 @@ BOOKS = {
         "content":
         "Registro del valor patrimonial no visible."
 
+    },
+
+
+    "cuentaselo_padres": {
+
+        "id":
+        "HER-BOOK-CTP",
+
+        "title":
+        "Cuéntaselo a tus Padres",
+
+        "category":
+        "puente familiar",
+
+        "content":
+        "Libro-regalo breve para acompañar la primera conversación sobre "
+        "el valor de la casa familiar, sin presión ni tecnicismos. "
+        "Capítulos completos disponibles próximamente.",
+
+        "chapters_path":
+        "knowledge/books/metadata/cuentaselo-a-tus-padres/",
+
+        "fundamento_legal":
+        "Decreto Número 87, Gaceta del Gobierno del Estado de México, 7 de mayo de 2013"
+
     }
 
 
