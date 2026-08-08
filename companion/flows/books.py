@@ -6,38 +6,27 @@ class BooksFlow:
     def execute(self, context):
 
         if hasattr(context, "update"):
-
             try:
-                context.update(
-                    "flow",
-                    "books"
-                )
-
+                context.update("flow", "books")
             except TypeError:
-                context.update(
-                    {
-                        "flow": "books"
-                    }
-                )
+                context.update({"flow": "books"})
 
         books = get_books()
 
         if isinstance(books, dict):
             books = books.values()
 
-        titles = [
-            book["title"]
-            for book in books
-        ]
+        titles = [book["title"] for book in books]
 
         return {
-            "type": "text",
-            "content":
-                "Libros HEREDITARIA disponibles: "
-                + ", ".join(titles)
+            "type": "video",
+            "media": "./assets/hereditaria-libro.mp4",
+            "content": (
+                "HEREDITARIA™ Vol. I\nLA CASA NO SE TOCA\n¿Ya viste por qué?\n\n"
+                "Libros disponibles: " + ", ".join(titles)
+            )
         }
 
 
 def handle(context):
-
     return BooksFlow().execute(context)

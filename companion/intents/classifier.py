@@ -34,6 +34,12 @@ def classify(message):
         return "property_question"
     # ─────────────────────────────────────────────────────────
 
+    if "qr" in text or "ocr" in text or "ticket" in text or "registro" in text:
+        return "receipt_registration"
+
+    if "tarjeta" in text or "nfc" in text or "farmacia" in text or "tranquilidad" in text:
+        return "card_trust"
+
     if "asesoria" in text or "consulta" in text:
         return "consultation_request"
 

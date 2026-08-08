@@ -1,4 +1,4 @@
-from .flows import books, consultation, escalation, greeting, help, status, caregiver, property
+from .flows import books, consultation, escalation, greeting, help, status, caregiver, property, receipt, card
 
 
 ROUTES = {
@@ -10,6 +10,8 @@ ROUTES = {
     "human_escalation": escalation.handle,
     "caregiver_problem": caregiver.handle,
     "property_question": property.handle,
+    "receipt_registration": receipt.handle,
+    "card_trust": card.handle,
 }
 
 
