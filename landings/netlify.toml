@@ -1,0 +1,47 @@
+# HEREDITARIA™ OS — Landings Redirects
+
+[[redirects]]
+  from = "/mis-hermanos-no-ayudan/*"
+  to = "https://mis-hermanos-no-ayudan.netlify.app/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/cuidador/*"
+  to = "https://cuidador-familiar.netlify.app/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/casa/*"
+  to = "https://hermano-quiere-vender-casa-hipotecar.netlify.app/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/testamento/*"
+  to = "https://testamento.netlify.app/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/valle-mexico/*"
+  to = "https://hereditaria-valle-mexico.netlify.app/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "https://hereditaria.netlify.app/:splat"
+  status = 200
+  force = true
+
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

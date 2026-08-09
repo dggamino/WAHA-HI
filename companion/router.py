@@ -1,4 +1,5 @@
 from .flows import books, consultation, escalation, greeting, help, status, caregiver, property, receipt, card, chapter
+from .flows.landing_flow import get_landing_flow
 
 ROUTES = {
     "greeting": greeting.handle,
@@ -16,6 +17,14 @@ ROUTES = {
 
 
 def dispatch(intent, context):
+    # PRIORIDAD 1: Detectar contexto de landing
+    raw_text = context.memory.get("raw_text", "") if hasattr(context, "memory") else ""
+    landing_flow = get_landing_flow()
+    landing_response = landing_flow.process(raw_text)
+    if landing_response:
+        return landing_response
+
+    # PRIORIDAD 2: Routing normal por intent
     handler = ROUTES.get(intent)
     if handler:
         return handler(context)

@@ -1,0 +1,163 @@
+{
+  "version": "1.0",
+  "project": "HEREDITARIA™ OS Landings",
+  "updated": "2026-08-09",
+  "landings": [
+    {
+      "id": "mis-hermanos-no-ayudan",
+      "url": "https://mis-hermanos-no-ayudan.netlify.app",
+      "display_name": "Mis Hermanos No Ayudan",
+      "keywords": ["hermanos no ayudan", "gasto invisible", "cuido solo", "pago todo", "mis hermanos", "no ayudan", "regalado"],
+      "book_id": "HER-BOOK-CND",
+      "book_title": "El Cuidador que Nadie Documentó",
+      "category": "cuidador",
+      "priority": 1
+    },
+    {
+      "id": "apoyo-cuidador-adultos-mayores",
+      "url": "https://apoyo-cuidador-adultos-mayores.netlify.app",
+      "display_name": "Apoyo Cuidador Adultos Mayores",
+      "keywords": ["apoyo cuidador", "adultos mayores", "apoyo"],
+      "book_id": "HER-BOOK-CND",
+      "book_title": "El Cuidador que Nadie Documentó",
+      "category": "cuidador",
+      "priority": 2
+    },
+    {
+      "id": "apoyos-cuidadores-mx",
+      "url": "https://apoyos-cuidadores-adultos-mayores-mx.netlify.app",
+      "display_name": "Apoyos Cuidadores MX",
+      "keywords": ["apoyos cuidadores", "cuidadores mx", "apoyos mx"],
+      "book_id": "HER-BOOK-CND",
+      "book_title": "El Cuidador que Nadie Documentó",
+      "category": "cuidador",
+      "priority": 3
+    },
+    {
+      "id": "apoyo-cuidador-adulto-mayor",
+      "url": "https://apoyo-cuidador-adulto-mayor.netlify.app",
+      "display_name": "Apoyo Cuidador Adulto Mayor",
+      "keywords": ["apoyo cuidador adulto mayor", "adulto mayor"],
+      "book_id": "HER-BOOK-CND",
+      "book_title": "El Cuidador que Nadie Documentó",
+      "category": "cuidador",
+      "priority": 4
+    },
+    {
+      "id": "cuidador-familiar-apoyos",
+      "url": "https://cuidador-familiar-apoyos.netlify.app",
+      "display_name": "Cuidador Familiar Apoyos",
+      "keywords": ["cuidador familiar apoyos", "familiar apoyos"],
+      "book_id": "HER-BOOK-CND",
+      "book_title": "El Cuidador que Nadie Documentó",
+      "category": "cuidador",
+      "priority": 5
+    },
+    {
+      "id": "cuidador-familiar-credito",
+      "url": "https://cuidador-familiar-credito.netlify.app",
+      "display_name": "Cuidador Familiar Crédito",
+      "keywords": ["cuidador familiar credito", "credito cuidador", "prestamo cuidador"],
+      "book_id": "HER-BOOK-CND",
+      "book_title": "El Cuidador que Nadie Documentó",
+      "category": "cuidador",
+      "priority": 6
+    },
+    {
+      "id": "cuidador-familiar",
+      "url": "https://cuidador-familiar.netlify.app",
+      "display_name": "Cuidador Familiar",
+      "keywords": ["cuidador familiar", "cuidador"],
+      "book_id": "HER-BOOK-CND",
+      "book_title": "El Cuidador que Nadie Documentó",
+      "category": "cuidador",
+      "priority": 7
+    },
+    {
+      "id": "diagnostico-cuidador-familiar",
+      "url": "https://diagnostico-cuidador-familiar.netlify.app",
+      "display_name": "Diagnóstico Cuidador Familiar",
+      "keywords": ["diagnostico cuidador", "evaluacion cuidador", "diagnostico"],
+      "book_id": "HER-BOOK-CND",
+      "book_title": "El Cuidador que Nadie Documentó",
+      "category": "cuidador",
+      "priority": 8
+    },
+    {
+      "id": "hermano-casa-hipotecar",
+      "url": "https://hermano-quiere-vender-casa-hipotecar.netlify.app",
+      "display_name": "Hermano Quiere Vender Casa",
+      "keywords": ["hermano quiere vender", "hipotecar casa", "casa familiar", "vender casa", "hipoteca"],
+      "book_id": "HER-BOOK-CNS",
+      "book_title": "La Casa No Se Toca. ¿Por Quién?",
+      "category": "patrimonio",
+      "priority": 1
+    },
+    {
+      "id": "cooperachas-familiares",
+      "url": "https://cooperachas-familiares.netlify.app",
+      "display_name": "Cooperachas Familiares",
+      "keywords": ["cooperacha", "cooperachas familiares", "gastos familia"],
+      "book_id": "HER-BOOK-CNS",
+      "book_title": "La Casa No Se Toca. ¿Por Quién?",
+      "category": "patrimonio",
+      "priority": 2
+    },
+    {
+      "id": "hereditaria-valle-mexico",
+      "url": "https://hereditaria-valle-mexico.netlify.app",
+      "display_name": "HEREDITARIA Valle de México",
+      "keywords": ["hereditaria valle mexico", "valle de mexico", "hereditaria cdmx"],
+      "book_id": "HER-BOOK-CNS",
+      "book_title": "La Casa No Se Toca. ¿Por Quién?",
+      "category": "patrimonio",
+      "priority": 3
+    },
+    {
+      "id": "testamento",
+      "url": "https://testamento.netlify.app",
+      "display_name": "Testamento",
+      "keywords": ["testamento", "herencia", "sucesion", "testar", "heredar"],
+      "book_id": "HER-BOOK-HC",
+      "book_title": "Herencia Calculada",
+      "category": "testamento",
+      "priority": 1
+    },
+    {
+      "id": "hereditaria-principal",
+      "url": "https://hereditaria.netlify.app",
+      "display_name": "HEREDITARIA™ Principal",
+      "keywords": ["hereditaria", "patrimonio familiar", "dggamino", "hereditaria os"],
+      "book_id": null,
+      "book_title": null,
+      "category": "principal",
+      "priority": 1
+    }
+  ],
+  "categories": {
+    "cuidador": {
+      "display": "Cuidador Familiar",
+      "description": "Landings orientadas al cuidador que sostiene el gasto invisible",
+      "book_id": "HER-BOOK-CND",
+      "landings_count": 8
+    },
+    "patrimonio": {
+      "display": "Patrimonio y Casa",
+      "description": "Landings sobre conflictos de vivienda y patrimonio familiar",
+      "book_id": "HER-BOOK-CNS",
+      "landings_count": 3
+    },
+    "testamento": {
+      "display": "Testamento y Herencia",
+      "description": "Landings sobre planificación sucesoria",
+      "book_id": "HER-BOOK-HC",
+      "landings_count": 1
+    },
+    "principal": {
+      "display": "HEREDITARIA™ Principal",
+      "description": "Landing central de la marca",
+      "book_id": null,
+      "landings_count": 1
+    }
+  }
+}
