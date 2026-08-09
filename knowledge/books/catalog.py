@@ -96,6 +96,23 @@ BOOKS = {
         "fundamento_legal": "Decreto Número 87, Gaceta del Gobierno del Estado de México, 7 de mayo de 2013",
         "audience": "El Calculador — quien vive lejos",
         "tier": "Biblioteca"
+    },
+    "pension_82": {
+        "id": "HER-BOOK-P82",
+        "title": "82% — Cómo tu Pensión Deja de ser Insuficiente",
+        "category": "Activación patrimonial",
+        "content": "Libro para el Planeador: por qué la pensión del IMSS bajo Ley 97 solo reemplaza el 37% "
+                   "del último salario, cómo una Hipoteca Inversa puede elevar esa tasa hasta el 82%, "
+                   "las 6 preguntas que debes hacer antes de firmar cualquier contrato, "
+                   "y por qué el momento correcto es ahora — no cuando ya no hay alternativa. "
+                   "7 capítulos + epílogo + nota legal.",
+        "chapters_path": "knowledge/books/metadata/82-pension-deja-insuficiente/",
+        "author": "Daniel Gómez Gamiño",
+        "year": 2026,
+        "keywords": ["PENSIÓN", "CASA", "AYUDA", "NOTARIO"],
+        "fundamento_legal": "Decreto Número 87, Gaceta del Gobierno del Estado de México, 7 de mayo de 2013",
+        "audience": "El Planeador — el propio adulto mayor",
+        "tier": "Biblioteca"
     }
 }
 
