@@ -63,6 +63,22 @@ BOOKS = {
         "fundamento_legal": "Decreto Número 87, Gaceta del Gobierno del Estado de México, 7 de mayo de 2013",
         "audience": "El marco de diagnóstico completo",
         "tier": "Biblioteca"
+    },
+    "cuidador_documentado": {
+        "id": "HER-BOOK-CND",
+        "title": "El Cuidador que Nadie Documentó",
+        "category": "Documentación del cuidado",
+        "content": "Libro para el Validador: por qué la memoria no es prueba ante un notario, "
+                   "qué es el pasivo hereditario del Código Civil del Estado de México, "
+                   "y cómo construir un expediente de cuidado con valor probatorio "
+                   "sin volverte notario. 7 capítulos + epílogo + nota legal.",
+        "chapters_path": "knowledge/books/metadata/cuidador-que-nadie-documento/",
+        "author": "Daniel Gómez Gamiño",
+        "year": 2026,
+        "keywords": ["TESTAMENTO", "PENSIÓN", "CUIDADOR", "CASA", "ESCRITURA", "NOTARIO"],
+        "fundamento_legal": "Decreto Número 87, Gaceta del Gobierno del Estado de México, 7 de mayo de 2013",
+        "audience": "El Validador — quien cuida de cerca",
+        "tier": "Biblioteca"
     }
 }
 
