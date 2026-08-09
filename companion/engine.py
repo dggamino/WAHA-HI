@@ -44,6 +44,7 @@ def process(message, session_id=None, user_id=None):
         user_id=user_id or "",
         intent=intent
     )
+    context.memory["raw_text"] = message
 
     response = dispatch(
         intent,

@@ -1,4 +1,10 @@
+import unicodedata
 from companion.adapters.knowledge import get_books
+
+
+def _strip_accents(text):
+    normalized = unicodedata.normalize("NFD", text)
+    return "".join(c for c in normalized if unicodedata.category(c) != "Mn")
 
 
 class BooksFlow:
@@ -11,10 +17,38 @@ class BooksFlow:
             except TypeError:
                 context.update({"flow": "books"})
 
-        books = get_books()
+        raw_text = ""
+        if hasattr(context, "memory") and isinstance(context.memory, dict):
+            raw_text = context.memory.get("raw_text", "") or ""
 
+        text_normalized = _strip_accents(raw_text.lower())
+
+        books = get_books()
         if isinstance(books, dict):
-            books = books.values()
+            books = list(books.values())
+
+        # ─── Ruteo por keyword específica del libro ──────────────
+        matched_book = None
+        for book in books:
+            book_keywords = book.get("keywords", [])
+            for kw in book_keywords:
+                kw_normalized = _strip_accents(kw.lower())
+                if kw_normalized in text_normalized and kw_normalized not in ("libro", "libros"):
+                    matched_book = book
+                    break
+            if matched_book:
+                break
+
+        if matched_book and matched_book.get("chapters_path"):
+            return {
+                "type": "text",
+                "content": (
+                    f"📖 *{matched_book['title']}*\n\n"
+                    f"{matched_book['content']}\n\n"
+                    f"Escribe *libros* para ver el catálogo completo."
+                )
+            }
+        # ───────────────────────────────────────────────────────────
 
         titles = [book["title"] for book in books]
 
