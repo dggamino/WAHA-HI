@@ -1,3 +1,4 @@
+import re
 import unicodedata
 
 
@@ -7,8 +8,10 @@ def _strip_accents(text):
 
 
 def classify(message):
-
     text = _strip_accents(message.lower())
+
+    if re.search(r'\bcapitulo\s*\d+\b', text):
+        return "chapter_request"
 
     saludos = ["hola", "buenos dias", "buenas tardes", "buenas noches",
                "buen dia", "que tal", "hey", "quien eres"]
