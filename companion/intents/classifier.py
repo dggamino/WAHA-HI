@@ -29,13 +29,21 @@ def classify(message):
     if "libro" in text or "libros" in text:
         return "book_interest"
 
-    # ─── NUEVOS INTENTS ──────────────────────────────────────
+    # ─── CALCULADORA GASTO INVISIBLE ─────────────────────────
+    calc_keywords = [
+        "calcula", "calcular", "gasto invisible", "estado de cuenta",
+        "cuanto he gastado", "cuanto he regalado", "meses cuidando",
+        "gasto bimestral", "cuanto gaste", "cuanto pague"
+    ]
+    if any(k in text for k in calc_keywords):
+        return "calculator"
+    # ─────────────────────────────────────────────────────────
+
     if "cuidado" in text or "cuidador" in text or "adulto mayor" in text or "enfermo" in text:
         return "caregiver_problem"
 
     if "patrimonio" in text or "herencia" in text or "testamento" in text or "casa" in text or "propiedad" in text:
         return "property_question"
-    # ─────────────────────────────────────────────────────────
 
     if "qr" in text or "ocr" in text or "ticket" in text or "registro" in text:
         return "receipt_registration"
