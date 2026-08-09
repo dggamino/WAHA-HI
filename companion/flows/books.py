@@ -39,7 +39,7 @@ class BooksFlow:
             if matched_book:
                 break
 
-        if matched_book and matched_book.get("chapters_path"):
+        if matched_book and matched_book.get("status") == "disponible" and matched_book.get("chapters_path"):
             return {
                 "type": "text",
                 "content": (
@@ -50,14 +50,19 @@ class BooksFlow:
             }
         # ───────────────────────────────────────────────────────────
 
-        titles = [book["title"] for book in books]
+        disponibles = [b["title"] for b in books if b.get("status") == "disponible"]
+        proximamente = [b["title"] for b in books if b.get("status") == "proximamente"]
+
+        catalog_text = "📚 *Disponibles ahora:*\n" + "\n".join(f"• {t}" for t in disponibles)
+        if proximamente:
+            catalog_text += "\n\n🔜 *Próximamente:*\n" + "\n".join(f"• {t}" for t in proximamente)
 
         return {
             "type": "video",
             "media": "./assets/hereditaria-libro.mp4",
             "content": (
                 "HEREDITARIA™ Vol. I\nLA CASA NO SE TOCA\n¿Ya viste por qué?\n\n"
-                "Libros disponibles: " + ", ".join(titles)
+                + catalog_text
             )
         }
 

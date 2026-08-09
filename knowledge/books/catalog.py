@@ -8,19 +8,15 @@ BOOKS = {
         "id": "HER-BOOK-001",
         "title": "Libro Fundacional HEREDITARIA",
         "category": "foundation",
-        "content": "Marco conceptual del sistema HEREDITARIA."
-    },
-    "cuidador": {
-        "id": "HER-BOOK-002",
-        "title": "Libro del Cuidador",
-        "category": "care",
-        "content": "Documentación de la experiencia del cuidador."
+        "content": "Marco conceptual del sistema HEREDITARIA.",
+        "status": "proximamente"
     },
     "patrimonio": {
         "id": "HER-BOOK-003",
         "title": "Libro del Patrimonio Invisible",
         "category": "heritage",
-        "content": "Registro del valor patrimonial no visible."
+        "content": "Registro del valor patrimonial no visible.",
+        "status": "proximamente"
     },
     "cuentaselo_padres": {
         "id": "HER-BOOK-CTP",
@@ -30,7 +26,8 @@ BOOKS = {
                    "el valor de la casa familiar, sin presión ni tecnicismos. "
                    "Capítulos completos disponibles próximamente.",
         "chapters_path": "knowledge/books/metadata/cuentaselo-a-tus-padres/",
-        "fundamento_legal": "Decreto Número 87, Gaceta del Gobierno del Estado de México, 7 de mayo de 2013"
+        "fundamento_legal": "Decreto Número 87, Gaceta del Gobierno del Estado de México, 7 de mayo de 2013",
+        "status": "disponible"
     },
     "casa_no_se_toca": {
         "id": "HER-BOOK-CST",
@@ -46,7 +43,8 @@ BOOKS = {
         "keywords": ["CASA", "PENSIÓN", "ESCRITURA", "TESTAMENTO", "NOTARIO", "PADRES"],
         "fundamento_legal": "Decreto Número 87, Gaceta del Gobierno del Estado de México, 7 de mayo de 2013",
         "audience": "Punto de entrada — cualquier lector",
-        "tier": "Biblioteca"
+        "tier": "Biblioteca",
+        "status": "disponible"
     },
     "cuadrante_patrimonio": {
         "id": "HER-BOOK-CPF",
@@ -62,7 +60,8 @@ BOOKS = {
         "keywords": ["PADRES", "CASA", "PENSIÓN", "TESTAMENTO", "CUIDADOR", "NOTARIO"],
         "fundamento_legal": "Decreto Número 87, Gaceta del Gobierno del Estado de México, 7 de mayo de 2013",
         "audience": "El marco de diagnóstico completo",
-        "tier": "Biblioteca"
+        "tier": "Biblioteca",
+        "status": "disponible"
     },
     "cuidador_documentado": {
         "id": "HER-BOOK-CND",
@@ -78,7 +77,8 @@ BOOKS = {
         "keywords": ["TESTAMENTO", "PENSIÓN", "CUIDADOR", "CASA", "ESCRITURA", "NOTARIO"],
         "fundamento_legal": "Decreto Número 87, Gaceta del Gobierno del Estado de México, 7 de mayo de 2013",
         "audience": "El Validador — quien cuida de cerca",
-        "tier": "Biblioteca"
+        "tier": "Biblioteca",
+        "status": "disponible"
     },
     "herencia_calculada": {
         "id": "HER-BOOK-HC",
@@ -95,7 +95,8 @@ BOOKS = {
         "keywords": ["PADRES", "CASA", "AYUDA", "NOTARIO"],
         "fundamento_legal": "Decreto Número 87, Gaceta del Gobierno del Estado de México, 7 de mayo de 2013",
         "audience": "El Calculador — quien vive lejos",
-        "tier": "Biblioteca"
+        "tier": "Biblioteca",
+        "status": "disponible"
     },
     "pension_82": {
         "id": "HER-BOOK-P82",
@@ -112,7 +113,8 @@ BOOKS = {
         "keywords": ["PENSIÓN", "CASA", "AYUDA", "NOTARIO"],
         "fundamento_legal": "Decreto Número 87, Gaceta del Gobierno del Estado de México, 7 de mayo de 2013",
         "audience": "El Planeador — el propio adulto mayor",
-        "tier": "Biblioteca"
+        "tier": "Biblioteca",
+        "status": "disponible"
     }
 }
 
@@ -123,6 +125,3 @@ def get_books():
 
 def catalog():
     return get_books()
-
-
-
