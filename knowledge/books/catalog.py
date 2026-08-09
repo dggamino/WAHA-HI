@@ -79,6 +79,23 @@ BOOKS = {
         "fundamento_legal": "Decreto Número 87, Gaceta del Gobierno del Estado de México, 7 de mayo de 2013",
         "audience": "El Validador — quien cuida de cerca",
         "tier": "Biblioteca"
+    },
+    "herencia_calculada": {
+        "id": "HER-BOOK-HC",
+        "title": "Herencia Calculada",
+        "category": "Perspectiva del hermano distante",
+        "content": "Libro para el Calculador: por qué el número que calculaste en silencio "
+                   "rara vez sobrevive intacto al costo real del conflicto, "
+                   "qué documenta (y qué no) una transferencia bancaria, "
+                   "y cómo volver a entrar a la conversación familiar antes de que sea tarde. "
+                   "7 capítulos + epílogo + nota legal.",
+        "chapters_path": "knowledge/books/metadata/herencia-calculada/",
+        "author": "Daniel Gómez Gamiño",
+        "year": 2026,
+        "keywords": ["PADRES", "CASA", "AYUDA", "NOTARIO"],
+        "fundamento_legal": "Decreto Número 87, Gaceta del Gobierno del Estado de México, 7 de mayo de 2013",
+        "audience": "El Calculador — quien vive lejos",
+        "tier": "Biblioteca"
     }
 }
 
@@ -89,7 +106,6 @@ def get_books():
 
 def catalog():
     return get_books()
-
 
 
 
