@@ -14,11 +14,26 @@ CATEGORY_BREAKDOWN = {
     "Transporte": 0.10
 }
 
-DATA_DIR = Path("data/estados_cuenta")
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+DATA_DIR = BASE_DIR / "data" / "estados_cuenta"
+SESSIONS_FILE = BASE_DIR / "data" / "calculator_sessions.json"
 
 
 def _ensure_data_dir():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def _load_sessions():
+    if SESSIONS_FILE.exists():
+        with open(SESSIONS_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+
+def _save_sessions(sessions):
+    SESSIONS_FILE.parent.mkdir(parents=True, exist_ok=True)
+    with open(SESSIONS_FILE, "w", encoding="utf-8") as f:
+        json.dump(sessions, f, ensure_ascii=False, indent=2)
 
 
 def _get_next_folio():
@@ -50,12 +65,22 @@ def _format_currency(amount):
 
 class CalculatorFlow:
     def __init__(self):
-        self.sessions = {}
+        self.sessions = _load_sessions()
 
     def _get_session(self, session_id):
         if session_id not in self.sessions:
             self.sessions[session_id] = {"step": "ask_meses"}
+            _save_sessions(self.sessions)
         return self.sessions[session_id]
+
+    def _update_session(self, session_id, data):
+        self.sessions[session_id] = data
+        _save_sessions(self.sessions)
+
+    def _clear_session(self, session_id):
+        if session_id in self.sessions:
+            del self.sessions[session_id]
+            _save_sessions(self.sessions)
 
     def _extract_number(self, text):
         if not text:
@@ -73,6 +98,7 @@ class CalculatorFlow:
             if meses and meses > 0:
                 sess["meses"] = meses
                 sess["step"] = "ask_gasto"
+                self._update_session(sid, sess)
                 return {
                     "type": "text",
                     "content": (
@@ -106,11 +132,7 @@ class CalculatorFlow:
                 }
 
         else:
-            sess["step"] = "ask_meses"
-            if "meses" in sess:
-                del sess["meses"]
-            if "gasto_bimestral" in sess:
-                del sess["gasto_bimestral"]
+            self._clear_session(sid)
             return self.process(text, sid, user_id)
 
     def _generate_result(self, sid, sess):
@@ -136,8 +158,7 @@ class CalculatorFlow:
             "nota": "Documento de registro sistemático con fines documentales."
         }
         _save_estado_cuenta(folio, estado_data)
-
-        del self.sessions[sid]
+        self._clear_session(sid)
 
         cats = list(desglose.items())
         lineas = []
